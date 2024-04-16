@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{title}}</title>
+        <style>
+            .zero-page-count {
+                     background-color: lightcoral;
+                    color: white; 
+            }
+
+            stable {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th,
+            td {
+                border: 1px solid black;
+                padding: 8px;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h1>{{title}}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Borough</th>
+                    <th>Cuisine</th>
+                    <th>Address</th>
+                    <th>Grades</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {{#each data}}
+                {{data}}
+                <tr class="{{#if (eq this.pageCount 0)}}zero-page-count{{/if}}">
+                    
+                    <td>{{this.name}}</td>
+                    <td>{{this.borough}}</td>
+                    <td>{{this.cuisine}}</td>
+                    <td>{{this.address.street}}</td>
+                    <td>
+                        <ul>
+                            {{#each this.grades}}
+                            <li>{{this.grade}}</li>
+                            {{/each}}
+                        </ul>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </body>
+
+</html>
